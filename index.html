@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Arreglos</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body class="bg-dark text-white">
+
+    <div class="container">
+        <h1>Consulta de Cursos</h1>
+
+        <hr>
+
+        <!-- Selección de curso -->
+        <div class="row">
+            <div class="col-10">
+                <div class="mb-3">
+                    <label for="selectCurso" class="form-label">Curso</label>
+                    <select class="form-select form-select-lg" name="selectCurso" id="selectCurso">
+                        <option selected value="">Selecciona un curso</option>
+                        <option value="curso1">Curso 1</option>
+                        <option value="curso2">Curso 2</option>
+                        <option value="curso3">Curso 3</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-2 mt-2">
+                <div class="mb-3 mt-4">
+                    <div class="d-grid gap-2">
+                        <button type="button" name="btnConsultarCurso" id="btnConsultarCurso"
+                            class="btn btn-primary btn-lg">
+                            Consultar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-grid gap-2 mt-1 mb-">
+            <button type="button" name="btnModificarNotas" id="btnModificarNotas" class="btn btn-primary mb-5">
+                MODIFICAR NOTAS
+            </button>
+        </div>
+
+        <!-- Modificar notas -->
+
+        <div id="seccionModificarNotas" class="row mb-4" style="display: none;">
+            <div class="col-8">
+                <div class="mb-3">
+                    <label for="inputNuevaNota" class="form-label">Nueva Nota (0-10)</label>
+                    <input type="number" class="form-control form-control-lg" id="inputNuevaNota" 
+                           min="0" max="10" step="0.1" placeholder="Ingrese una nota entre 0 y 10">
+                </div>
+            </div>
+            <div class="col-2 mt-2">
+                <div class="mb-3 mt-4">
+                    <div class="d-grid gap-2">
+                        <button type="button" id="btnAnadirNota" class="btn btn-success btn-lg">
+                            AÑADIR
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 mt-2">
+                <div class="mb-3 mt-4">
+                    <div class="d-grid gap-2">
+                        <button type="button" id="btnBorrarNota" class="btn btn-warning btn-lg">
+                            BORRAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Tabla resumen -->
+            <div class="table-responsive">
+                <table class="table table-bordered" id="tablaResumenCurso">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Aprobados</th>
+                            <th scope="col">Supletorios</th>
+                            <th scope="col">Reprobados</th>
+                            <th scope="col">Promedio General</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="totalAprobados">0</td>
+                            <td id="totalSupletorios">0</td>
+                            <td id="totalReprobados">0</td>
+                            <td id="promedioGeneral">0</td>
+                            <td id="estadoCurso">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Botones de filtrado -->
+            <div class="row mt-5" id="seccionFiltrosAlumnos" style="display: none;">
+                <div class="col-1"></div>
+
+                <div class="col-2">
+                    <h3>Tabla de:</h3>
+                </div>
+
+                <div class="col-2">
+                    <div class="d-grid gap-2">
+                        <button type="button" id="btnMostrarAprobados" class="btn btn-primary">
+                            Alumnos Aprobados
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="d-grid gap-2">
+                        <button type="button" id="btnMostrarSupletorios" class="btn btn-primary">
+                            Alumnos a Supletorio
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="d-grid gap-2">
+                        <button type="button" id="btnMostrarReprobados" class="btn btn-primary">
+                            Alumnos Reprobados
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="d-grid gap-2">
+                        <button type="button" id="btnMostrarTodos" class="btn btn-primary">
+                            Todos los Alumnos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla detalle alumnos -->
+            <div class="row mt-5" id="seccionTablaAlumnos" style="display: none;">
+                <div class="col-3"></div>
+
+                <div class="col-6">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="tablaDetalleAlumnos">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Nota</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyDetalleAlumnos">
+                                <tr>
+                                    <td>0</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modificar notas -->
+
+
+
+        </div>
+
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="./public/js/clasificarNotas.js"></script>
+</body>
+
+</html>
